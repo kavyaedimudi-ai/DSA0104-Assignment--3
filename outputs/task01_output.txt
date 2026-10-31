@@ -1,0 +1,5 @@
+Title: (empty), Author: Unknown, Copies: 0
+Title: C++ Basics, Author: Unknown, Copies: 0
+Title: Effective C++, Author: Scott Meyers, Copies: 0
+Title: C++ Language, Author: Bjarne Stroustrup, Copies: 5
+Title: Invalid, Author: Unknown, Copies: 0

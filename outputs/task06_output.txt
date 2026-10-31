@@ -1,0 +1,6 @@
+Text 1: Hello 
+Text 2: World
+Concatenated Text: Hello World
+Text 1 and Text 4 are equal.
+Text 1 and Text 2 are different.
+After self-assignment: Hello 

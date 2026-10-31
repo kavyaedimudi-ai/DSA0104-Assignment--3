@@ -1,0 +1,16 @@
+TIME OPERATORS
+Original time: 10 seconds
+Prefix increment: 11 seconds
+Postfix increment: 11 seconds
+After postfix increment: 12 seconds
+Time comparison:
+Both times are equal.
+t1 is not less than t2.
+
+PLAYLIST OPERATORS
+First song: Song A
+Updated second song: Updated Song B
+All songs:
+Song A
+Updated Song B
+Song C

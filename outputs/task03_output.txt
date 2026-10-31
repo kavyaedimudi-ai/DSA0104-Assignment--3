@@ -1,0 +1,23 @@
+Auditorium created with 3 rows and 4 seats per row.
+Seat booked successfully.
+Seat booked successfully.
+Seat already booked.
+
+Seat Status (0 = Available, 1 = Booked):
+0 1 0 0 
+0 0 1 0 
+0 0 0 0 
+Booking cancelled successfully.
+
+Seat Status (0 = Available, 1 = Booked):
+0 0 0 0 
+0 0 1 0 
+0 0 0 0 
+Auditorium created with 2 rows and 3 seats per row.
+Seat booked successfully.
+
+Seat Status (0 = Available, 1 = Booked):
+0 0 0 
+0 1 0 
+Auditorium memory released.
+Auditorium memory released.

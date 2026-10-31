@@ -1,0 +1,15 @@
+COMPLEX NUMBER OPERATIONS
+Complex Number 1: 4 + 3i
+Complex Number 2: 2 + 1i
+Addition: 6 + 4i
+Subtraction: 2 + 2i
+Multiplication: 5 + 10i
+Division: 2.2 + 0.4i
+
+AC IMPEDANCE CALCULATION
+Resistor Impedance: 100 + 0i
+Inductor Impedance: 0 + 31.4159i
+Capacitor Impedance: 0 - 31.831i
+Series RLC Impedance: 100 - 0.415062i
+Parallel RLC Impedance: 99.828 + 4.14348i
+Error: Division by zero is not allowed.

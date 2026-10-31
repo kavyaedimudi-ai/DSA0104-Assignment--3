@@ -1,0 +1,5 @@
+Money 1: Rs. 100.75
+Money 2: Rs. 50.50
+Total: Rs. 151.25
+Both amounts are not equal.
+Carry Test: Rs. 16.15
