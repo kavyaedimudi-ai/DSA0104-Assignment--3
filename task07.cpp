@@ -1,19 +1,117 @@
-#include <cmath>
 #include <iostream>
+#include <cmath>
 #include <stdexcept>
 using namespace std;
-class Complex{
- double re,im;
+
+class Complex {
+    double real, imag;
+
 public:
- Complex():re(0),im(0){}
- Complex(double r):re(r),im(0){}
- Complex(double r,double i):re(r),im(i){}
- Complex operator+(const Complex& z)const{return Complex(re+z.re,im+z.im);}
- Complex operator-(const Complex& z)const{return Complex(re-z.re,im-z.im);}
- Complex operator*(const Complex& z)const{return Complex(re*z.re-im*z.im,re*z.im+im*z.re);}
- Complex operator/(const Complex& z)const{double d=z.re*z.re+z.im*z.im;if(d==0)throw runtime_error("Division by zero impedance");return Complex((re*z.re+im*z.im)/d,(im*z.re-re*z.im)/d);}
- bool operator==(const Complex& z)const{return re==z.re&&im==z.im;}
- double magnitude()const{return sqrt(re*re+im*im);}
- friend ostream& operator<<(ostream& o,const Complex& z){o<<z.re<<(z.im<0?" - j":" + j")<<abs(z.im);return o;}
+    Complex(double r = 0, double i = 0)
+        : real(r), imag(i) {}
+
+    // Addition
+    Complex operator+(const Complex& c) const {
+        return Complex(real + c.real, imag + c.imag);
+    }
+
+    // Subtraction
+    Complex operator-(const Complex& c) const {
+        return Complex(real - c.real, imag - c.imag);
+    }
+
+    // Multiplication
+    Complex operator*(const Complex& c) const {
+        return Complex(
+            real * c.real - imag * c.imag,
+            real * c.imag + imag * c.real
+        );
+    }
+
+    // Division
+    Complex operator/(const Complex& c) const {
+        double denominator = c.real * c.real + c.imag * c.imag;
+
+        if (denominator == 0)
+            throw runtime_error("Division by zero is not allowed.");
+
+        return Complex(
+            (real * c.real + imag * c.imag) / denominator,
+            (imag * c.real - real * c.imag) / denominator
+        );
+    }
+
+    // Display complex number
+    friend ostream& operator<<(ostream& out, const Complex& c) {
+        out << c.real;
+
+        if (c.imag >= 0)
+            out << " + " << c.imag << "i";
+        else
+            out << " - " << -c.imag << "i";
+
+        return out;
+    }
 };
-int main(){const double pi=acos(-1.0),w=2*pi*50,L=.01,C=100e-6;Complex R(10),ZL(0,w*L),ZC(0,-1/(w*C));Complex series=R+ZL+ZC;Complex parallel=(R*ZL)/(R+ZL);cout<<"Resistor: "<<R<<"\\nInductor: "<<ZL<<"\\nCapacitor: "<<ZC<<"\\nSeries impedance: "<<series<<"\\nSeries magnitude: "<<series.magnitude()<<"\\nParallel (R and L): "<<parallel<<'\\n';try{Complex zero;cout<<R/zero;}catch(const runtime_error& e){cout<<e.what()<<'\\n';}}
+
+int main() {
+    const double PI = 3.141592653589793;
+    const double frequency = 50.0;
+    const double omega = 2 * PI * frequency;
+
+    cout << "COMPLEX NUMBER OPERATIONS\n";
+
+    Complex c1(4, 3);
+    Complex c2(2, 1);
+
+    cout << "Complex Number 1: " << c1 << '\n';
+    cout << "Complex Number 2: " << c2 << '\n';
+
+    cout << "Addition: " << c1 + c2 << '\n';
+    cout << "Subtraction: " << c1 - c2 << '\n';
+    cout << "Multiplication: " << c1 * c2 << '\n';
+    cout << "Division: " << c1 / c2 << '\n';
+
+    cout << "\nAC IMPEDANCE CALCULATION\n";
+
+    double resistance = 100.0;
+    double inductance = 0.1;
+    double capacitance = 100e-6;
+
+    Complex ZR(resistance, 0);
+    Complex ZL(0, omega * inductance);
+    Complex ZC(0, -1.0 / (omega * capacitance));
+
+    cout << "Resistor Impedance: " << ZR << '\n';
+    cout << "Inductor Impedance: " << ZL << '\n';
+    cout << "Capacitor Impedance: " << ZC << '\n';
+
+    // Series RLC circuit
+    Complex Zseries = ZR + ZL + ZC;
+
+    cout << "Series RLC Impedance: " << Zseries << '\n';
+
+    // Parallel RLC circuit
+    Complex one(1, 0);
+
+    Complex YR = one / ZR;
+    Complex YL = one / ZL;
+    Complex YC = one / ZC;
+
+    Complex totalAdmittance = YR + YL + YC;
+    Complex Zparallel = one / totalAdmittance;
+
+    cout << "Parallel RLC Impedance: " << Zparallel << '\n';
+
+    // Division by zero test
+    try {
+        Complex zero(0, 0);
+        Complex result = c1 / zero;
+        cout << result << '\n';
+    }
+    catch (const exception& e) {
+        cout << "Error: " << e.what() << '\n';
+    }
+
+    return 0;
+}
